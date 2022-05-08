@@ -82,7 +82,7 @@ router.post('/:id/rentBook', function(req, res){
         }
     }
 
-    res.send('Du har lånat boken.');
+    res.redirect('/books');
 });
 
 
