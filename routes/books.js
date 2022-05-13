@@ -2,12 +2,11 @@ let express = require('express');
 let router = express.Router();
 
 let nanoId = require('nanoid');
+let fs = require('fs');
 
-let books = [
-    {id:nanoId.nanoid(), bookName:'book A', author:'gunde', pages:200, rented: false},
-    {id:nanoId.nanoid(), bookName:'book B', author:'roffe', pages:300, rented: false},
-    {id:nanoId.nanoid(), bookName:'book C', author:'berra', pages:600, rented: true},
-];
+
+
+let books = JSON.parse(fs.readFileSync('books.json'));
 
 
 
@@ -82,6 +81,12 @@ router.post('/:id/rentBook', function(req, res){
         }
     }
 
+    fs.readFile('books.json', (err, data) => {
+        fs.writeFile('books.json', JSON.stringify(books, null, 4), (err) => {
+
+        });
+    });
+
     res.redirect('/books');
 });
 
@@ -91,10 +96,25 @@ router.post('/newBook', function(req, res){
 
     let newBook = {...req.body, id:nanoId.nanoid(), rented:false};
     books.push(newBook);
-    
-    res.redirect('/books');
+
+    fs.readFile('books.json', (err, data) => {
+        if(err){
+            console.log(err);
+        }
+
+        fs.writeFile('books.json', JSON.stringify(books, null, 4), (err) => {
+            if(err){
+                console.log(err);
+            }
+        });
+
+        ;
+    });
+
+    res.redirect('/books')
 });
 
 
 
 module.exports = router;
+

@@ -1,0 +1,23 @@
+[
+    {
+        "id": "mHaoAYZOYLPm0rvg-70mg",
+        "bookName": "book A",
+        "author": "gunde",
+        "pages": "200",
+        "rented": "false"
+    },
+    {
+        "id": "9skET7tyPOMjRV0zJgz6k",
+        "bookName": "book B",
+        "author": "roffe",
+        "pages": "300",
+        "rented": "false"
+    },
+    {
+        "id": "c7MnJhK3mquqfuJS_NZ9D",
+        "bookName": "book C",
+        "author": "berra",
+        "pages": "600",
+        "rented": "true"
+    }
+]
